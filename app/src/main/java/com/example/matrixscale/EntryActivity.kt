@@ -10,6 +10,7 @@ import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintLayout.*
+import com.example.matrixscale.MainActivity.Companion.ADJUST_KEY
 import com.example.matrixscale.MainActivity.Companion.IMAGE_TYPE_KEY
 import com.example.matrixscale.MainActivity.Companion.SCALE_TYPE_KEY
 import com.example.matrixscale.MainActivity.Companion.SIZE_TYPE_KEY
@@ -47,6 +48,7 @@ class EntryActivity : AppCompatActivity() {
                     SIZE_TYPE_KEY,
                     SizeTypeEnum.getEnum(size_selector.selectedItem.toString())
                 )
+                putExtra(ADJUST_KEY, adjustviewbounds_selector.isChecked)
             }
             startActivity(intent)
         }

@@ -25,6 +25,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
+    <CheckBox
+        android:text="Adjust View Bounds"
+        android:layout_gravity="center"
+        android:id="@+id/adjustviewbounds_selector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_show"
         android:layout_width="wrap_content"

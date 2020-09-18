@@ -11,6 +11,7 @@ class MainActivity : AppCompatActivity() {
         const val IMAGE_TYPE_KEY = "IMAGETYPE"
         const val SCALE_TYPE_KEY = "SCALETYPE"
         const val SIZE_TYPE_KEY = "SIZETYPE"
+        const val ADJUST_KEY = "ADJUSTKEY"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,6 +23,7 @@ class MainActivity : AppCompatActivity() {
             layoutParams.width = (intent.getSerializableExtra(SIZE_TYPE_KEY) as SizeTypeEnum).layoutParams.second
             setImageResource((intent.getSerializableExtra(IMAGE_TYPE_KEY) as ImagesTypeEnum).imageId)
             scaleType = (intent.getSerializableExtra(SCALE_TYPE_KEY) as ScaleTypeEnum).scaleType
+            adjustViewBounds = intent.getBooleanExtra(ADJUST_KEY, false)
         }
     }
 }
