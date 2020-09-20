@@ -15,12 +15,6 @@
 
     <androidx.appcompat.widget.AppCompatSpinner
         android:layout_gravity="center"
-        android:id="@+id/scale_selector"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <androidx.appcompat.widget.AppCompatSpinner
-        android:layout_gravity="center"
         android:id="@+id/size_selector"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
@@ -29,6 +23,25 @@
         android:text="Adjust View Bounds"
         android:layout_gravity="center"
         android:id="@+id/adjustviewbounds_selector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:layout_gravity="center"
+        android:id="@+id/scale_selector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <CheckBox
+        android:text="Matrix Based"
+        android:layout_gravity="center"
+        android:id="@+id/matrixbased_selector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:layout_gravity="center"
+        android:id="@+id/matrix_based_scale_selector"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
