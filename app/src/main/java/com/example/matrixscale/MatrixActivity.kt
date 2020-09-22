@@ -1,13 +1,11 @@
 package com.example.matrixscale
 
 import android.graphics.Matrix
-import android.graphics.RectF
 import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.SeekBar
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.image_picture
 import kotlinx.android.synthetic.main.activity_matrix.*
 
@@ -64,31 +62,35 @@ class MatrixActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
     override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
         val drawable = image_picture.drawable ?: return
 
+        val oneOne = seek_one_one.progress.toFloat()/100
+        val oneTwo = seek_one_two.progress.toFloat()/100
+        val oneThree = seek_one_three.progress.toFloat()
+        val twoOne = seek_two_one.progress.toFloat()/100
+        val twoTwo = seek_two_two.progress.toFloat()/100
+        val twoThree = seek_two_three.progress.toFloat()
+        val threeOne = seek_three_one.progress.toFloat()/10000
+        val threeTwo = seek_three_two.progress.toFloat()/10000
+        val threeThree = seek_three_three.progress.toFloat()/100
+
         val matrix = Matrix().apply {
             setValues(
                 floatArrayOf(
-                    seek_one_one.progress.toFloat()/100,
-                    seek_one_two.progress.toFloat()/100,
-                    seek_one_three.progress.toFloat(),
-                    seek_two_one.progress.toFloat()/100,
-                    seek_two_two.progress.toFloat()/100,
-                    seek_two_three.progress.toFloat(),
-                    seek_three_one.progress.toFloat()/10000,
-                    seek_three_two.progress.toFloat()/10000,
-                    seek_three_three.progress.toFloat()/100
+                    oneOne, oneTwo, oneThree,
+                    twoOne, twoTwo, twoThree,
+                    threeOne, threeTwo, threeThree
                 )
             )
         }
 
-        text_one_one.text = (seek_one_one.progress.toFloat()/100).toString()
-        text_one_two.text = (seek_one_two.progress.toFloat()/100).toString()
-        text_one_three.text = (seek_one_three.progress.toFloat()).toString()
-        text_two_one.text = (seek_two_one.progress.toFloat()/100).toString()
-        text_two_two.text = (seek_two_two.progress.toFloat()/100).toString()
-        text_two_three.text = (seek_two_three.progress.toFloat()).toString()
-        text_three_one.text = (seek_three_one.progress.toFloat()/10000).toString()
-        text_three_two.text = (seek_three_two.progress.toFloat()/10000).toString()
-        text_three_three.text = (seek_three_three.progress.toFloat()/100).toString()
+        text_one_one.text = oneOne.toString()
+        text_one_two.text = oneTwo.toString()
+        text_one_three.text = oneThree.toString()
+        text_two_one.text = twoOne.toString()
+        text_two_two.text = twoTwo.toString()
+        text_two_three.text = twoThree.toString()
+        text_three_one.text = threeOne.toString()
+        text_three_two.text = threeTwo.toString()
+        text_three_three.text = threeThree.toString()
 
         translateToCenter(drawable, matrix)
     }

@@ -46,7 +46,7 @@
             android:max="200"/>
         <TextView
             android:id="@+id/text_one_one"
-            android:text="1"
+            android:text="1.0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="@id/seek_one_one"
@@ -68,7 +68,7 @@
             app:layout_constraintTop_toTopOf="parent" />
         <TextView
             android:id="@+id/text_one_two"
-            android:text="0"
+            android:text="0.0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="@id/seek_one_two"
@@ -90,7 +90,7 @@
             app:layout_constraintTop_toTopOf="parent" />
         <TextView
             android:id="@+id/text_one_three"
-            android:text="0"
+            android:text="0.0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="@id/seek_one_three"
@@ -112,7 +112,7 @@
             android:min="-200" />
         <TextView
             android:id="@+id/text_two_one"
-            android:text="0"
+            android:text="0.0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="@id/seek_two_one"
@@ -134,7 +134,7 @@
             app:layout_constraintTop_toBottomOf="@id/seek_one_two" />
         <TextView
             android:id="@+id/text_two_two"
-            android:text="1"
+            android:text="1.0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="@id/seek_two_two"
@@ -156,7 +156,7 @@
             app:layout_constraintTop_toBottomOf="@id/seek_one_three" />
         <TextView
             android:id="@+id/text_two_three"
-            android:text="0"
+            android:text="0.0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="@id/seek_two_three"
@@ -178,7 +178,7 @@
             android:max="300"/>
         <TextView
             android:id="@+id/text_three_one"
-            android:text="0"
+            android:text="0.0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="@id/seek_three_one"
@@ -200,7 +200,7 @@
             android:max="300"/>
         <TextView
             android:id="@+id/text_three_two"
-            android:text="0"
+            android:text="0.0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="@id/seek_three_two"
@@ -222,7 +222,7 @@
             android:max="200"/>
         <TextView
             android:id="@+id/text_three_three"
-            android:text="1"
+            android:text="1.0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="@id/seek_three_three"
