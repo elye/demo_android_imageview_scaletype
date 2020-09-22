@@ -1,7 +1,9 @@
 package com.example.matrixscale
 
 import android.content.Intent
+import android.graphics.Matrix
 import android.os.Bundle
+import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.ImageView.ScaleType
 import androidx.annotation.DrawableRes
@@ -60,6 +62,10 @@ class EntryActivity : AppCompatActivity() {
                 )
             }
             startActivity(intent)
+        }
+
+        button_matrix_explore.setOnClickListener {
+            startActivity(Intent(this, MatrixActivity::class.java))
         }
     }
 }

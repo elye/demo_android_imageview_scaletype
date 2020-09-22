@@ -1,5 +1,6 @@
 package com.example.matrixscale
 
+import android.graphics.Matrix
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
