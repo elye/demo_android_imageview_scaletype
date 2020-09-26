@@ -51,11 +51,16 @@
         android:layout_height="wrap_content"
         android:text="show" />
 
-
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_matrix_explore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="explore matrix" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_matrix_page"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="page turn scale" />
 
 </LinearLayout>

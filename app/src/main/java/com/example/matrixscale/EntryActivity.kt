@@ -67,6 +67,10 @@ class EntryActivity : AppCompatActivity() {
         button_matrix_explore.setOnClickListener {
             startActivity(Intent(this, MatrixActivity::class.java))
         }
+
+        button_matrix_page.setOnClickListener {
+            startActivity(Intent(this, TurnPageActivity::class.java))
+        }
     }
 }
 
