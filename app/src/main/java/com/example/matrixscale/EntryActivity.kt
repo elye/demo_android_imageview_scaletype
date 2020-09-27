@@ -1,9 +1,7 @@
 package com.example.matrixscale
 
 import android.content.Intent
-import android.graphics.Matrix
 import android.os.Bundle
-import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.ImageView.ScaleType
 import androidx.annotation.DrawableRes
@@ -78,7 +76,9 @@ enum class ImagesTypeEnum(val descriptor: String, @DrawableRes val imageId: Int)
     BIGGER("Bigger Image - Fall", R.drawable.fall),
     SMALLER("Smaller Image - Lion", R.drawable.lion),
     TALLER("Taller Image - Tree", R.drawable.tree),
-    LONGER("Longer Image - Bridge", R.drawable.bridge);
+    LONGER("Longer Image - Bridge", R.drawable.bridge),
+    JUMP("Tall Image - Jump", R.drawable.jump),
+    ATHLETIC("Long Image - Track", R.drawable.athletic);
 
     override fun toString(): String {
         return descriptor
