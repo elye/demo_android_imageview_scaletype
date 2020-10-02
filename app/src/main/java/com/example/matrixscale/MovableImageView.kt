@@ -10,7 +10,6 @@ import android.view.MotionEvent
 import android.view.VelocityTracker
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.OverScroller
-import android.widget.RadioButton
 import androidx.appcompat.widget.AppCompatImageView
 
 class MovableImageView @JvmOverloads constructor(
