@@ -1,13 +1,16 @@
 package com.example.matrixscale
 
 import android.content.Context
+import android.content.res.Resources
 import android.graphics.Matrix
 import android.graphics.RectF
 import android.util.AttributeSet
+import android.util.TypedValue
 import android.view.MotionEvent
 import android.view.VelocityTracker
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.OverScroller
+import android.widget.RadioButton
 import androidx.appcompat.widget.AppCompatImageView
 
 class MovableImageView @JvmOverloads constructor(
@@ -66,11 +69,19 @@ class MovableImageView @JvmOverloads constructor(
             }
             MotionEvent.ACTION_UP -> {
                 when (scrollerType) {
-                    RadioScollerEnum.SCROLL_BACK -> {
-                        scroller.startScroll(scrollX, scrollY, -scrollX, -scrollY)
+                    RadioScollerEnum.SPRING_BACK -> {
+                        scroller.springBack(scrollX, scrollY, 0,0 ,0, 0)
                         invalidate()
                     }
-                    RadioScollerEnum.FLING -> {
+                    RadioScollerEnum.SCROLL_TO -> {
+                        scroller.startScroll(scrollX, scrollY, -scrollX, -scrollY, 1000)
+                        invalidate()
+                    }
+                    RadioScollerEnum.FLING,
+                    RadioScollerEnum.FLING_OVER -> {
+                        val overValue = if (scrollerType == RadioScollerEnum.FLING_OVER)
+                            resources.dpToPx(64) else 0
+
                         velocityTracker?.let {
                             // Compute velocity within the last 1000ms
                             it.addMovement(event)
@@ -80,7 +91,8 @@ class MovableImageView @JvmOverloads constructor(
                                 scrollX, scrollY,
                                 -it.xVelocity.toInt(), -it.yVelocity.toInt(),
                                 leftLimit.toInt(), rightLimit.toInt(),
-                                topLimit.toInt(), bottomLimit.toInt()
+                                topLimit.toInt(), bottomLimit.toInt(),
+                                overValue, overValue
                             )
                             invalidate()
                         }
@@ -120,6 +132,18 @@ class MovableImageView @JvmOverloads constructor(
         if (scroller.computeScrollOffset()) {
             scrollTo(scroller.currX, scroller.currY)
             invalidate()
+        }
+    }
+
+    inline fun <reified T> Resources.dpToPx(value: Int): T {
+        val result = TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP,
+            value.toFloat(), displayMetrics)
+
+        return when (T::class) {
+            Float::class -> result as T
+            Int::class -> result.toInt() as T
+            else -> throw IllegalStateException("Type not supported")
         }
     }
 }

@@ -63,8 +63,10 @@ class EntryActivity : AppCompatActivity() {
                 putExtra(
                     SCROLLER_TYPE,
                     when (radio_scroller.checkedRadioButtonId) {
-                        R.id.radio_scroll_back -> RadioScollerEnum.SCROLL_BACK
+                        R.id.radio_spring_back -> RadioScollerEnum.SPRING_BACK
+                        R.id.radio_scroll_back -> RadioScollerEnum.SCROLL_TO
                         R.id.radio_fling -> RadioScollerEnum.FLING
+                        R.id.radio_fling_over -> RadioScollerEnum.FLING_OVER
                         else -> RadioScollerEnum.NOTHING
                     }
                 )
@@ -103,8 +105,10 @@ enum class ImagesTypeEnum(val descriptor: String, @DrawableRes val imageId: Int)
 
 enum class RadioScollerEnum {
     NOTHING,
-    SCROLL_BACK,
-    FLING
+    SPRING_BACK,
+    SCROLL_TO,
+    FLING,
+    FLING_OVER
 }
 
 enum class ScaleTypeEnum(val descriptor: String, val scaleType: ScaleType) {
