@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
         const val ADJUST_KEY = "ADJUST_KEY"
         const val MATRIX_BASED_KEY = "MATRIX_BASED_KEY"
         const val MATRIX_BASED_SCALE_KEY = "MATRIX_BASED_SCALE_KEY"
+        const val SCROLLER_TYPE = "SCROLLER_TYPE_KEY"
     }
 
     private val baseMatrix = Matrix()
@@ -28,6 +29,7 @@ class MainActivity : AppCompatActivity() {
             layoutParams.width = (intent.getSerializableExtra(SIZE_TYPE_KEY) as SizeTypeEnum).layoutParams.second
             setImageResource((intent.getSerializableExtra(IMAGE_TYPE_KEY) as ImagesTypeEnum).imageId)
             adjustViewBounds = intent.getBooleanExtra(ADJUST_KEY, false)
+            (this as MovableImageView).scrollerType = intent.getSerializableExtra(SCROLLER_TYPE) as RadioScollerEnum
 
             scaleType = if (intent.getBooleanExtra(MATRIX_BASED_KEY, false)) {
                 val matrixBasedScaleTypeEnum =

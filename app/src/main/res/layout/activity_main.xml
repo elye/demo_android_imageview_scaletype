@@ -6,11 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <com.example.matrixscale.MovableImageView
         android:id="@+id/image_picture"
         android:background="#0ff"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
