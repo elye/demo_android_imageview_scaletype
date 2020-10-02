@@ -13,6 +13,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
+    <RadioGroup
+        android:id="@+id/radio_scroller"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+        <RadioButton android:id="@+id/radio_scroll_nothing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Nothing" />
+        <RadioButton android:id="@+id/radio_scroll_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Scroll Back" />
+        <RadioButton android:id="@+id/radio_fling"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fling" />
+    </RadioGroup>
+
     <androidx.appcompat.widget.AppCompatSpinner
         android:layout_gravity="center"
         android:id="@+id/size_selector"

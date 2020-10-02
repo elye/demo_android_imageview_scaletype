@@ -12,6 +12,7 @@ import com.example.matrixscale.MainActivity.Companion.IMAGE_TYPE_KEY
 import com.example.matrixscale.MainActivity.Companion.MATRIX_BASED_KEY
 import com.example.matrixscale.MainActivity.Companion.MATRIX_BASED_SCALE_KEY
 import com.example.matrixscale.MainActivity.Companion.SCALE_TYPE_KEY
+import com.example.matrixscale.MainActivity.Companion.SCROLLER_TYPE
 import com.example.matrixscale.MainActivity.Companion.SIZE_TYPE_KEY
 import kotlinx.android.synthetic.main.activity_entry.*
 
@@ -56,7 +57,16 @@ class EntryActivity : AppCompatActivity() {
                 putExtra(
                     MATRIX_BASED_SCALE_KEY,
                     MatrixBasedScaleTypeEnum.getEnum(
-                        matrix_based_scale_selector.selectedItem.toString())
+                        matrix_based_scale_selector.selectedItem.toString()
+                    )
+                )
+                putExtra(
+                    SCROLLER_TYPE,
+                    when (radio_scroller.checkedRadioButtonId) {
+                        R.id.radio_scroll_back -> RadioScollerEnum.SCROLL_BACK
+                        R.id.radio_fling -> RadioScollerEnum.FLING
+                        else -> RadioScollerEnum.NOTHING
+                    }
                 )
             }
             startActivity(intent)
@@ -89,6 +99,12 @@ enum class ImagesTypeEnum(val descriptor: String, @DrawableRes val imageId: Int)
             return values().first { it.descriptor == value }
         }
     }
+}
+
+enum class RadioScollerEnum {
+    NOTHING,
+    SCROLL_BACK,
+    FLING
 }
 
 enum class ScaleTypeEnum(val descriptor: String, val scaleType: ScaleType) {
@@ -138,14 +154,22 @@ enum class SizeTypeEnum(
     val descriptor: String,
     val layoutParams: Pair<Int, Int>
 ) {
-    MATCH_PARENT("All Match Parent",
-        Pair(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)),
-    WRAP_CONTENT("All Wrap Content",
-        Pair(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT)),
-    MATCH_PARENT_WRAP_CONTENT("Height Match - Width Wrap",
-        Pair(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)),
-    WRAP_CONTENT_MATCH_PARENT("Height Wrap - Width Match",
-        Pair(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT));
+    MATCH_PARENT(
+        "All Match Parent",
+        Pair(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
+    ),
+    WRAP_CONTENT(
+        "All Wrap Content",
+        Pair(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT)
+    ),
+    MATCH_PARENT_WRAP_CONTENT(
+        "Height Match - Width Wrap",
+        Pair(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)
+    ),
+    WRAP_CONTENT_MATCH_PARENT(
+        "Height Wrap - Width Match",
+        Pair(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT)
+    );
 
     override fun toString(): String {
         return descriptor
