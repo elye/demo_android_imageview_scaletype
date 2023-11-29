@@ -3,33 +3,35 @@ package com.example.matrixscale
 import android.graphics.Matrix
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.ImageView
 import android.widget.SeekBar
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_turn_page.seek_turn_page
-import kotlinx.android.synthetic.main.activity_turn_page.image_picture
+import com.example.matrixscale.databinding.ActivityTurnPageBinding
 import kotlin.math.abs
-import kotlin.math.log10
 import kotlin.math.pow
 
 class TurnPageActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
+
+    private lateinit var binding: ActivityTurnPageBinding
+    
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_turn_page)
-        seek_turn_page.setOnSeekBarChangeListener(this)
+        binding = ActivityTurnPageBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
-        image_picture.addOnLayoutChangeListener { v, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom ->
+        binding.seekTurnPage.setOnSeekBarChangeListener(this)
+
+        binding.imagePicture.addOnLayoutChangeListener { v, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom ->
             scalingPicture(100)
         }
     }
 
     private fun scalingPicture(scaleValue: Int) {
 
-        val drawable = image_picture.drawable ?: return
+        val drawable = binding.imagePicture.drawable ?: return
 
-        val viewWidth: Float = getImageViewWidth(image_picture).toFloat()
-        val viewHeight: Float = getImageViewHeight(image_picture).toFloat()
+        val viewWidth: Float = getImageViewWidth(binding.imagePicture).toFloat()
+        val viewHeight: Float = getImageViewHeight(binding.imagePicture).toFloat()
         val drawableWidth = drawable.intrinsicWidth
         val drawableHeight = drawable.intrinsicHeight
 
@@ -40,7 +42,7 @@ class TurnPageActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
         val skewValue = 0.3f - abs(scaleValue.toDouble().pow(2.0) /10000f) * 0.3f
         matrix.preSkew(0f, skewValue.toFloat())
 
-        image_picture.imageMatrix = matrix
+        binding.imagePicture.imageMatrix = matrix
     }
 
     override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
