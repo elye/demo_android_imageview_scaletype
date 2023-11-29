@@ -5,9 +5,12 @@ import android.graphics.RectF
 import android.os.Bundle
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_main.*
+import com.example.matrixscale.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
+
     companion object {
         const val IMAGE_TYPE_KEY = "IMAGE_TYPE_KEY"
         const val SCALE_TYPE_KEY = "SCALE_TYPE_KEY"
@@ -22,9 +25,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
-        image_picture.apply {
+        binding.imagePicture.apply {
             layoutParams.height = (intent.getSerializableExtra(SIZE_TYPE_KEY) as SizeTypeEnum).layoutParams.first
             layoutParams.width = (intent.getSerializableExtra(SIZE_TYPE_KEY) as SizeTypeEnum).layoutParams.second
             setImageResource((intent.getSerializableExtra(IMAGE_TYPE_KEY) as ImagesTypeEnum).imageId)
@@ -46,10 +51,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateBaseMatrix(scaleType: MatrixBasedScaleTypeEnum) {
-        val drawable = image_picture.drawable ?: return
+        val drawable = binding.imagePicture.drawable ?: return
 
-        val viewWidth: Float = getImageViewWidth(image_picture).toFloat()
-        val viewHeight: Float = getImageViewHeight(image_picture).toFloat()
+        val viewWidth: Float = getImageViewWidth(binding.imagePicture).toFloat()
+        val viewHeight: Float = getImageViewHeight(binding.imagePicture).toFloat()
         val drawableWidth = drawable.intrinsicWidth
         val drawableHeight = drawable.intrinsicHeight
         baseMatrix.reset()
@@ -121,7 +126,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        image_picture.imageMatrix = baseMatrix
+        binding.imagePicture.imageMatrix = baseMatrix
     }
 
     private fun getImageViewWidth(imageView: ImageView): Int {

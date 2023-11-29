@@ -9,16 +9,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TurnPageActivity"></activity>
-        <activity android:name=".MatrixActivity" />
-        <activity android:name=".EntryActivity">
+        <activity
+            android:name=".TurnPageActivity"
+            android:exported="false"></activity>
+        <activity
+            android:name=".MatrixActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EntryActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

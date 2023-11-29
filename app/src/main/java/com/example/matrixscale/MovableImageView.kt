@@ -96,6 +96,8 @@ class MovableImageView @JvmOverloads constructor(
                             invalidate()
                         }
                     }
+
+                    else -> { /* no action */ }
                 }
 
                 velocityTracker?.recycle()

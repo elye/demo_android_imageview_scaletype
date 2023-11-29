@@ -14,55 +14,60 @@ import com.example.matrixscale.MainActivity.Companion.MATRIX_BASED_SCALE_KEY
 import com.example.matrixscale.MainActivity.Companion.SCALE_TYPE_KEY
 import com.example.matrixscale.MainActivity.Companion.SCROLLER_TYPE
 import com.example.matrixscale.MainActivity.Companion.SIZE_TYPE_KEY
-import kotlinx.android.synthetic.main.activity_entry.*
+import com.example.matrixscale.databinding.ActivityEntryBinding
 
 
 class EntryActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityEntryBinding
+    
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_entry)
-
-        image_selector.adapter = ArrayAdapter(
+        binding = ActivityEntryBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
+        
+        binding.imageSelector.adapter = ArrayAdapter(
             this, android.R.layout.simple_spinner_item, ImagesTypeEnum.values()
         )
 
-        scale_selector.adapter = ArrayAdapter(
+        binding.scaleSelector.adapter = ArrayAdapter(
             this, android.R.layout.simple_spinner_item, ScaleTypeEnum.values()
         )
 
-        size_selector.adapter = ArrayAdapter(
+        binding.sizeSelector.adapter = ArrayAdapter(
             this, android.R.layout.simple_spinner_item, SizeTypeEnum.values()
         )
 
-        matrix_based_scale_selector.adapter = ArrayAdapter(
+        binding.matrixBasedScaleSelector.adapter = ArrayAdapter(
             this, android.R.layout.simple_spinner_item, MatrixBasedScaleTypeEnum.values()
         )
 
-        button_show.setOnClickListener {
+        binding.buttonShow.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java).apply {
                 putExtra(
                     IMAGE_TYPE_KEY,
-                    ImagesTypeEnum.getEnum(image_selector.selectedItem.toString())
+                    ImagesTypeEnum.getEnum(binding.imageSelector.selectedItem.toString())
                 )
                 putExtra(
                     SCALE_TYPE_KEY,
-                    ScaleTypeEnum.getEnum(scale_selector.selectedItem.toString())
+                    ScaleTypeEnum.getEnum(binding.scaleSelector.selectedItem.toString())
                 )
                 putExtra(
                     SIZE_TYPE_KEY,
-                    SizeTypeEnum.getEnum(size_selector.selectedItem.toString())
+                    SizeTypeEnum.getEnum(binding.sizeSelector.selectedItem.toString())
                 )
-                putExtra(ADJUST_KEY, adjustviewbounds_selector.isChecked)
-                putExtra(MATRIX_BASED_KEY, matrixbased_selector.isChecked)
+                putExtra(ADJUST_KEY, binding.adjustviewboundsSelector.isChecked)
+                putExtra(MATRIX_BASED_KEY, binding.matrixbasedSelector.isChecked)
                 putExtra(
                     MATRIX_BASED_SCALE_KEY,
                     MatrixBasedScaleTypeEnum.getEnum(
-                        matrix_based_scale_selector.selectedItem.toString()
+                        binding.matrixBasedScaleSelector.selectedItem.toString()
                     )
                 )
                 putExtra(
                     SCROLLER_TYPE,
-                    when (radio_scroller.checkedRadioButtonId) {
+                    when (binding.radioScroller.checkedRadioButtonId) {
                         R.id.radio_spring_back -> RadioScollerEnum.SPRING_BACK
                         R.id.radio_scroll_back -> RadioScollerEnum.SCROLL_TO
                         R.id.radio_fling -> RadioScollerEnum.FLING
@@ -74,11 +79,11 @@ class EntryActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        button_matrix_explore.setOnClickListener {
+        binding.buttonMatrixExplore.setOnClickListener {
             startActivity(Intent(this, MatrixActivity::class.java))
         }
 
-        button_matrix_page.setOnClickListener {
+        binding.buttonMatrixPage.setOnClickListener {
             startActivity(Intent(this, TurnPageActivity::class.java))
         }
     }
@@ -117,7 +122,7 @@ enum class ScaleTypeEnum(val descriptor: String, val scaleType: ScaleType) {
     CENTER_INSIDE("Center Inside", ScaleType.CENTER_INSIDE),
     CENTER_CROP("Center Crop", ScaleType.CENTER_CROP),
     FIT_CENTER("Fit Center", ScaleType.FIT_CENTER),
-    FIT_START("Fit Start", ScaleType.FIT_START),
+    FITSTART("Fit Start", ScaleType.FIT_START),
     FIT_END("Fit End", ScaleType.FIT_END),
     FIT_XY("Fit XY", ScaleType.FIT_XY);
 
